@@ -1,6 +1,6 @@
 {
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  // Panacea-style: logo and keys in the terminal's red (follows the Omarchy
+  // Enigma theme: logo and keys in the terminal's red (follows the Omarchy
   // theme palette), values white, dim dividers. Delete this file to get
   // Omarchy's default back (/etc/fastfetch/config.jsonc).
   "logo": {

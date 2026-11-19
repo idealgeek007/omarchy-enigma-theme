@@ -1,5 +1,5 @@
 # Syntax colours follow the active Omarchy theme (reads its colors.toml).
-# Monochrome-first, accent for commands, red only for errors (Panacea style).
+# Monochrome-first, accent for commands, red only for errors (Enigma theme).
 status is-interactive; or return
 set -l f ~/.local/state/omarchy/current/theme/colors.toml
 test -r $f; or return

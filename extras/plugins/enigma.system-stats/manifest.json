@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "panacea.system-stats",
+  "id": "enigma.system-stats",
   "name": "CPU and RAM",
   "version": "1.0.0",
-  "author": "panacea-dark",
+  "author": "enigma",
   "description": "Compact live CPU and RAM usage for the Omarchy bar",
   "kinds": ["bar-widget"],
   "entryPoints": {

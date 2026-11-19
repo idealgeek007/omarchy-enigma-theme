@@ -1,5 +1,5 @@
 #!/bin/bash
-# Panacea Dark extras: everything an Omarchy theme can't ship by itself.
+# Enigma theme extras: everything an Omarchy theme can't ship by itself.
 # Safe to re-run. Backs up anything it replaces as <file>.bak.<timestamp>.
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -13,8 +13,9 @@ cp "$HERE/fonts/Doto-ExtraBold.ttf" ~/.local/share/fonts/doto/
 fc-cache -f ~/.local/share/fonts >/dev/null
 say "Font: Doto installed"
 
-# 2. Bar plugins: dot-matrix clock + Panacea calendar, workspace dots, CPU/RAM
+# 2. Bar plugins: dot-matrix clock + calendar, workspace dots, CPU/RAM
 mkdir -p ~/.config/omarchy/plugins
+rm -rf ~/.config/omarchy/plugins/panacea.*   # older name of these plugins
 for p in "$HERE"/plugins/*/; do
   rm -rf ~/.config/omarchy/plugins/"$(basename "$p")"
   cp -r "$p" ~/.config/omarchy/plugins/
@@ -26,9 +27,11 @@ if [[ -f $SHELL_JSON ]]; then
 import json, sys
 p = sys.argv[1]
 d = json.load(open(p))
-swap = {"omarchy.clock": "panacea.clock", "omarchy.workspaces": "panacea.workspaces"}
-swap.update({k.replace("omarchy.", "enigma."): v for k, v in swap.items()})
-swap["enigma.system-stats"] = "panacea.system-stats"
+# Point the bar at the enigma.* clones (also migrates older panacea.* ids).
+swap = {}
+for name in ("clock", "workspaces", "system-stats", "network", "bluetooth", "audio", "power", "weather"):
+    for old in ("omarchy.", "panacea."):
+        swap[old + name] = "enigma." + name
 def walk(o):
     if isinstance(o, dict):
         return {k: (swap.get(v, v) if k in ("id", "centerAnchor") and isinstance(v, str) else walk(v)) for k, v in o.items()}
@@ -36,19 +39,22 @@ def walk(o):
         return [walk(x) for x in o]
     return o
 d = walk(d)
-center = d.get("layout", {}).get("center")
-if isinstance(center, list) and not any(isinstance(e, dict) and e.get("id") == "panacea.system-stats" for e in center):
-    i = next((n + 1 for n, e in enumerate(center) if isinstance(e, dict) and e.get("id") == "panacea.clock"), len(center))
-    center.insert(i, {"id": "panacea.system-stats"})
+center = d.get("bar", {}).get("layout", {}).get("center")
+if isinstance(center, list) and not any(isinstance(e, dict) and e.get("id") == "enigma.system-stats" for e in center):
+    i = next((n + 1 for n, e in enumerate(center) if isinstance(e, dict) and e.get("id") == "enigma.clock"), len(center))
+    center.insert(i, {"id": "enigma.system-stats"})
 json.dump(d, open(p, "w"), indent=2)
 PY
-  say "Bar: panacea.clock, panacea.workspaces, panacea.system-stats"
+  say "Bar: enigma clock, calendar, workspaces, CPU/RAM, Wi-Fi, Bluetooth, audio, power, weather"
 fi
 
 # 3. Hyprland motion, borders, rounding (only active while the theme is)
-cp "$HERE/hypr/panacea-dark.lua" ~/.config/hypr/panacea-dark.lua
-grep -q 'hypr.panacea-dark' ~/.config/hypr/hyprland.lua || \
-  printf '\n-- Panacea Dark theme extras (no-op under other themes)\nrequire("hypr.panacea-dark")\n' >> ~/.config/hypr/hyprland.lua
+cp "$HERE/hypr/enigma.lua" ~/.config/hypr/enigma.lua
+# migrate the older panacea-dark hook
+rm -f ~/.config/hypr/panacea-dark.lua
+sed -i '/Panacea Dark theme extras/d; /require("hypr.panacea-dark")/d' ~/.config/hypr/hyprland.lua
+grep -q 'hypr.enigma' ~/.config/hypr/hyprland.lua || \
+  printf '\n-- Enigma theme extras (no-op under other themes)\nrequire("hypr.enigma")\n' >> ~/.config/hypr/hyprland.lua
 say "Hyprland: animations + borders"
 
 # 4. Fish prompt and theme-aware syntax colours
@@ -64,7 +70,7 @@ fi
 mkdir -p ~/.config/fastfetch
 backup ~/.config/fastfetch/config.jsonc
 cp "$HERE/fastfetch/config.jsonc" ~/.config/fastfetch/
-say "Fastfetch: Panacea layout"
+say "Fastfetch: dotted layout"
 
 # 6. Code - OSS theme sync (Arch's `code`), runs on every theme change
 mkdir -p ~/.config/omarchy/hooks/theme-set.d
@@ -73,6 +79,6 @@ say "VS Code (Code - OSS): theme sync hook"
 
 # 7. Font + apply
 omarchy font set "JetBrainsMono Nerd Font" >/dev/null 2>&1 || true
-omarchy theme set panacea-dark >/dev/null 2>&1 || true
+omarchy theme set enigma >/dev/null 2>&1 || true
 omarchy restart shell >/dev/null 2>&1 || true
 say "Done. Reload VS Code windows to pick up the colours."

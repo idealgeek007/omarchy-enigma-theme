@@ -6,7 +6,7 @@ import qs.Ui
 
 BarWidget {
   id: root
-  moduleName: "panacea.workspaces"
+  moduleName: "enigma.workspaces"
 
   function workspaceById(id) {
     var values = Hyprland.workspaces.values
@@ -51,7 +51,7 @@ BarWidget {
     Repeater {
       model: root.workspaceIds()
 
-      // Panacea / Nothing-style: dots instead of numbers.
+      // Nothing-style: dots instead of numbers.
       // Focused = red pill, occupied = white dot, empty = dim dot.
       Item {
         id: cell

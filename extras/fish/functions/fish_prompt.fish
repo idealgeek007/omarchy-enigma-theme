@@ -1,4 +1,4 @@
-# One-line pill prompt, after Panacea's fish_prompt.
+# Enigma one-line pill prompt.
 # ▍dir  branch*  ⏵jobs  ⟢   — the arrow turns red when the last command failed.
 function fish_prompt
     set -l last_status $status

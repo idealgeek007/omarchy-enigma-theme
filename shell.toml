@@ -6,7 +6,7 @@
 # Alpha companions (where present) range from 0 (invisible) to 1 (opaque).
 background       = "#141414"
 background-alpha = 1.0
-text             = "#bdbdbd"
+text             = "#c6c6c6"
 # Modules calling attention to themselves (recording, voxtype, alerts, updates)
 active           = "#d9454b"
 # Cross-axis size at font base-size 12. size-horizontal is the height of
@@ -21,7 +21,7 @@ size-vertical    = 28
 # lock, notifications, popups, and menu-style cards stay aligned with the
 # current Hyprland active-border gradient.
 active-border            = "#d71921"
-active-border-foreground = "#bdbdbd"
+active-border-foreground = "#c6c6c6"
 
 [controls]
 # Shared state tokens for interactive control chrome (buttons, dropdowns,
@@ -31,25 +31,25 @@ active-border-foreground = "#bdbdbd"
 # N, "Y X", "T X B", or "T R B L". Per-side keys like
 # normal-border-width-left override the list. Each *-border accepts either a
 # solid color or a Hyprland-style gradient, e.g. "rgba(...) rgba(...) 45deg".
-normal-color        = "#bdbdbd"
+normal-color        = "#c6c6c6"
 normal-fill-alpha   = 0.05
-normal-border       = "#bdbdbd"
+normal-border       = "#c6c6c6"
 normal-border-width = 1
 normal-border-alpha = 0.10
 
 # Hover-cursor: mouse hover and the panel keyboard cursor.
-hover-cursor-color        = "#bdbdbd"
+hover-cursor-color        = "#c6c6c6"
 hover-cursor-fill-alpha   = 0.10
-hover-cursor-border       = "#bdbdbd"
+hover-cursor-border       = "#c6c6c6"
 hover-cursor-border-width = 1
 hover-cursor-border-alpha = 0.25
 
 # Focus: Qt activeFocus. Mirror the hover-cursor values by default so
 # mouse hover, keyboard cursor, and tab focus all read as the same state
 # — themes that want focus to stand out override these four lines.
-focus-color        = "#bdbdbd"
+focus-color        = "#c6c6c6"
 focus-fill-alpha   = 0.10
-focus-border       = "#bdbdbd"
+focus-border       = "#c6c6c6"
 focus-border-width = 1
 focus-border-alpha = 0.25
 
@@ -126,7 +126,7 @@ base-size = 12
 # individual border-width-top/right/bottom/left keys override the list.
 background       = "#141414"
 background-alpha = 1.0
-text             = "#bdbdbd"
+text             = "#c6c6c6"
 border           = "#2a2a2a"
 border-alpha     = 0.6
 # border-width     = 2
@@ -136,14 +136,14 @@ border-alpha     = 0.6
 # 0.97 mirrors the legacy hard-coded tooltip opacity.
 background       = "#141414"
 background-alpha = 0.97
-text             = "#bdbdbd"
+text             = "#c6c6c6"
 border           = "#2a2a2a"
 border-alpha     = 1.0
 
 [notifications]
 background       = "#141414"
 background-alpha = 1.0
-text             = "#bdbdbd"
+text             = "#c6c6c6"
 # Conventionally matches the Hyprland active-window border. Border accepts
 # either a solid color or the full active-border gradient.
 border           = "#2a2a2a"
@@ -158,16 +158,16 @@ countdown        = "#d71921"
 # mirror [menu] with the card at 0.95 to preserve the legacy translucency.
 background                = "#141414"
 background-alpha          = 0.95
-text                      = "#bdbdbd"
+text                      = "#c6c6c6"
 border                    = "#2a2a2a"
 border-alpha              = 1.0
 scrim                     = "#000000"
 scrim-alpha               = 0.6
 selected-background       = "#d6d6d6"
-selected-background-alpha = 1.0
-selected-text             = "#141414"
-selected-border           = "#d6d6d6"
-selected-border-alpha     = 0.25
+selected-background-alpha = 0.13
+selected-text             = "#ffffff"
+selected-border           = "#d71921"
+selected-border-alpha     = 0.85
 
 [menu]
 # Cards, rows, and selected-row treatment. Alpha companions (where present)
@@ -175,16 +175,16 @@ selected-border-alpha     = 0.25
 # behind the card. Clipboard and emojis inherit these tokens.
 background                = "#141414"
 background-alpha          = 1.0
-text                      = "#bdbdbd"
+text                      = "#c6c6c6"
 border                    = "#2a2a2a"
 border-alpha              = 1.0
 scrim                     = "#000000"
 scrim-alpha               = 0.6
 selected-background       = "#d6d6d6"
-selected-background-alpha = 1.0
-selected-text             = "#141414"
-selected-border           = "#d6d6d6"
-selected-border-alpha     = 0.25
+selected-background-alpha = 0.13
+selected-text             = "#ffffff"
+selected-border           = "#d71921"
+selected-border-alpha     = 0.85
 
 [polkit]
 # Polkit authentication prompt (sudo/password dialogs). scrim is the
@@ -194,7 +194,7 @@ selected-border-alpha     = 0.25
 # border-error (the two states are mutually exclusive in time).
 background       = "#141414"
 background-alpha = 1.0
-text             = "#bdbdbd"
+text             = "#c6c6c6"
 text-error       = "#d9454b"
 border           = "#2a2a2a"
 border-error     = "#d9454b"
@@ -212,8 +212,8 @@ accent           = "#d71921"
 # exclusive in time).
 background       = "#141414"
 background-alpha = 0.92
-text             = "#bdbdbd"
-placeholder      = "#5a5a5a"
+text             = "#c6c6c6"
+placeholder      = "#8c8c8c"
 text-error       = "#d9454b"
 border           = "#d6d6d6"
 border-active    = "#d6d6d6"
@@ -230,8 +230,8 @@ selection-alpha  = 0.25
 # unselected-border-alpha softens carousel slices that aren't selected.
 scrim                   = "#000000"
 scrim-alpha             = 0.5
-text                    = "#bdbdbd"
+text                    = "#c6c6c6"
 selected-border         = "#d71921"
 selected-border-alpha   = 1.0
-unselected-border       = "#bdbdbd"
+unselected-border       = "#c6c6c6"
 unselected-border-alpha = 0.28

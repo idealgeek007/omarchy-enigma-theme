@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "panacea.workspaces",
-  "name": "Panacea Workspaces",
+  "id": "enigma.workspaces",
+  "name": "Enigma Workspaces",
   "version": "1.0.0",
   "author": "Omarchy",
   "description": "Workspace number indicators",

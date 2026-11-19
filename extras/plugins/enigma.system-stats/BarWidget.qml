@@ -5,7 +5,7 @@ import qs.Ui
 
 BarWidget {
   id: root
-  moduleName: "panacea.system-stats"
+  moduleName: "enigma.system-stats"
 
   property int cpuPercent: 0
   property int memoryPercent: 0
@@ -59,7 +59,7 @@ BarWidget {
     }
   }
 
-  // Panacea / Nothing: dim small-caps label, dot-matrix value,
+  // Nothing-style: dim small-caps label, dot-matrix value,
   // value turns red past 85%.
   component Stat: Row {
     property string label

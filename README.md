@@ -1,41 +1,37 @@
-# Panacea Dark — Omarchy theme
+# Enigma — Omarchy theme
 
-A dark, Nothing-style Omarchy theme based on [EnsixD/Panacea](https://github.com/EnsixD/Panacea):
-charcoal surfaces, soft grey text, one signal red (`#d71921`), dot-matrix numerals.
+A dark, Nothing-style dotted theme for Omarchy: charcoal surfaces, soft grey
+text, one signal red (`#d71921`), dot-matrix numbers and headings.
 
 ![preview](preview.png)
 
 ## Install
 
 ```bash
-omarchy theme install https://github.com/idealgeek007/omarchy-panacea-dark-theme
+omarchy theme install https://github.com/idealgeek007/omarchy-enigma-theme
+~/.config/omarchy/themes/enigma/extras/install.sh
 ```
 
-That gives you the colours, wallpapers, icons and the Nothing-style shell
-(menus, launcher, notifications, lock screen).
+The first line gives you colours, wallpapers, icons and the shell styling
+(menus, launcher, notifications, lock screen). Omarchy won't let a theme
+installed from git ship code, so the second line installs the rest. It backs
+up anything it replaces as `*.bak.<timestamp>` and is safe to re-run.
 
-### Extras (recommended)
-
-Omarchy themes can't ship code, so the rest lives in `extras/`:
-
-```bash
-~/.config/omarchy/themes/panacea-dark/extras/install.sh
-```
+## What the extras add
 
 | Extra | What you get |
 |---|---|
-| `plugins/panacea.clock` | Dot-matrix bar clock; calendar with a dot-matrix date, red "today" disc and a Nothing-style year dot bar |
-| `plugins/panacea.workspaces` | Workspace dots: red pill = focused, white = occupied, dim = empty |
-| `plugins/panacea.system-stats` | CPU / RAM with dim labels and dot-matrix values that turn red past 85% |
-| `hypr/panacea-dark.lua` | Panacea animations, red→white borders, 12px corners (only while this theme is active; respects the no-gaps toggle) |
-| `fish/` | Panacea pill prompt `▍dir  branch*  ⟢` and syntax colours read live from the active theme |
+| `plugins/enigma.clock` | Dot-matrix bar clock; calendar with dotted date, red "today" disc, year as a dot bar |
+| `plugins/enigma.workspaces` | Workspace dots: red pill = focused, white = occupied, dim = empty |
+| `plugins/enigma.system-stats` | CPU / RAM: dim labels, dotted values, red past 85% |
+| `plugins/enigma.network` `.bluetooth` `.audio` `.power` `.weather` | The Wi‑Fi, Bluetooth, sound, power and weather panels with dotted numbers and headings, dot-style level indicators |
+| `hypr/enigma.lua` | Soft pop-in animations, red→white borders, 12px rounded panels (only while Enigma is active; keeps windows square under the no-gaps toggle) |
+| `fish/` | One-line prompt `▍dir  branch*  ⟢` (red on failure) and syntax colours read from the active theme |
 | `fastfetch/` | Red logo and keys, dot bullets |
 | `hooks/code-oss-theme.hook` | Syncs the theme into Code - OSS (Arch's `code`), which Omarchy skips |
-| `fonts/Doto-ExtraBold.ttf` | [Doto](https://github.com/oliverlalan/Doto), SIL OFL 1.1 |
-
-The installer backs up anything it replaces as `*.bak.<timestamp>`.
+| `fonts/Doto-ExtraBold.ttf` | Dot-matrix font, [Doto](https://github.com/oliverlalan/Doto), SIL OFL 1.1 |
 
 ## Credits
 
-Look and wallpapers derived from [EnsixD/Panacea](https://github.com/EnsixD/Panacea) (MIT),
-inverted to dark. Doto font © The Doto Project Authors, SIL OFL 1.1.
+Wallpapers adapted (inverted to dark) from [EnsixD/Panacea](https://github.com/EnsixD/Panacea), MIT.
+Doto font © The Doto Project Authors, SIL OFL 1.1.

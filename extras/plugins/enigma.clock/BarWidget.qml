@@ -12,7 +12,7 @@ import "Model.js" as Model
 // middle click opens the timezone picker.
 BarWidget {
   id: root
-  moduleName: "panacea.clock"
+  moduleName: "enigma.clock"
 
   property date displayDate: clock.date
 
@@ -143,7 +143,7 @@ BarWidget {
     id: button
     anchors.fill: parent
     bar: root.bar
-    // Panacea: dot-matrix clock digits (Doto, Nothing-style)
+    // Dot-matrix clock digits (Doto, Nothing-style)
     fontFamily: "Doto"
     fontSize: Style.font.body * 1.3
     text: root.vertical ? "" : root.displayText

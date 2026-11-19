@@ -1,19 +1,19 @@
-# Panacea Dark — Omarchy theme based on EnsixD/Panacea ("Nothing" look):
-# soft charcoal surfaces, grey text (eased contrast), a single signal red (#d71921).
+# Enigma — dark, Nothing-style Omarchy theme: charcoal surfaces, soft grey
+# text, one signal red (#d71921), dot-matrix numerals.
 mode = "dark"
 
 accent = "#d71921"
 selection = "#2e2e2e"
-muted = "#6e6e6e"
+muted = "#8c8c8c"
 
 background = "#141414"
 dark_background = "#0f0f0f"
 darker_background = "#0a0a0a"
 lighter_background = "#222222"
 
-foreground = "#bdbdbd"
-dark_foreground = "#5c5c5c"
-light_foreground = "#a8a8a8"
+foreground = "#c6c6c6"
+dark_foreground = "#7c7c7c"
+light_foreground = "#b3b3b3"
 bright_foreground = "#d6d6d6"
 
 red = "#d9454b"

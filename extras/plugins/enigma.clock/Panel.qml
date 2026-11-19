@@ -316,7 +316,7 @@ Panel {
                 id: heroDate
                 textFormat: Text.PlainText
                 anchors.verticalCenter: parent.verticalCenter
-                // Panacea: dot-matrix hero date
+                // Dot-matrix hero date
                 text: Qt.formatDate(root.today, "MMM d").toUpperCase()
                 color: heroMouse.containsMouse
                   ? Color.accent
@@ -452,7 +452,7 @@ Panel {
                 height: Style.space(6)
                 color: "transparent"
 
-                // Panacea / Nothing: one dot per segment of the year.
+                // Nothing-style: one dot per segment of the year.
                 // Elapsed = solid, current = red, ahead = dim.
                 readonly property int dots: 26
                 readonly property int lit: Math.floor(root.yearDone * dots)
@@ -679,7 +679,7 @@ Panel {
                       radius: Style.cornerRadius
                       // Today is outlined, not filled: a lit-up block shouts
                       // over a grid this quiet.
-                      // Panacea: today is a solid red disc, the rest is monochrome.
+                      // Today is a solid red disc, the rest is monochrome.
                       color: "transparent"
 
                       Rectangle {

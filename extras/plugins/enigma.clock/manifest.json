@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "id": "panacea.clock",
-  "name": "Panacea Clock",
+  "id": "enigma.clock",
+  "name": "Enigma Clock",
   "version": "1.0.0",
   "author": "Omarchy",
   "description": "Date/time label with a calendar popup",
