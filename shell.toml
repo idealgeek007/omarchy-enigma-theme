@@ -32,14 +32,14 @@ active-border-foreground = "#bdbdbd"
 # normal-border-width-left override the list. Each *-border accepts either a
 # solid color or a Hyprland-style gradient, e.g. "rgba(...) rgba(...) 45deg".
 normal-color        = "#bdbdbd"
-normal-fill-alpha   = 0.04
+normal-fill-alpha   = 0.05
 normal-border       = "#bdbdbd"
 normal-border-width = 1
-normal-border-alpha = 0.18
+normal-border-alpha = 0.10
 
 # Hover-cursor: mouse hover and the panel keyboard cursor.
 hover-cursor-color        = "#bdbdbd"
-hover-cursor-fill-alpha   = 0.08
+hover-cursor-fill-alpha   = 0.10
 hover-cursor-border       = "#bdbdbd"
 hover-cursor-border-width = 1
 hover-cursor-border-alpha = 0.25
@@ -48,17 +48,17 @@ hover-cursor-border-alpha = 0.25
 # mouse hover, keyboard cursor, and tab focus all read as the same state
 # — themes that want focus to stand out override these four lines.
 focus-color        = "#bdbdbd"
-focus-fill-alpha   = 0.08
+focus-fill-alpha   = 0.10
 focus-border       = "#bdbdbd"
 focus-border-width = 1
 focus-border-alpha = 0.25
 
 # Selected: persistent chosen/current state.
-selected-color        = "#bdbdbd"
-selected-fill-alpha   = 0.22
-selected-border       = "#bdbdbd"
-selected-border-width = 0
-selected-border-alpha = 1.0
+selected-color        = "#d6d6d6"
+selected-fill-alpha   = 0.12
+selected-border       = "#d71921"
+selected-border-width = 1
+selected-border-alpha = 0.9
 
 # Momentary fills.
 pressed-fill-alpha   = 0.22
@@ -128,7 +128,7 @@ background       = "#141414"
 background-alpha = 1.0
 text             = "#bdbdbd"
 border           = "#2a2a2a"
-border-alpha     = 1.0
+border-alpha     = 0.6
 # border-width     = 2
 
 [tooltip]
@@ -147,7 +147,7 @@ text             = "#bdbdbd"
 # Conventionally matches the Hyprland active-window border. Border accepts
 # either a solid color or the full active-border gradient.
 border           = "#2a2a2a"
-border-alpha     = 1.0
+border-alpha     = 0.6
 # border-width     = 2
 countdown        = "#d71921"
 

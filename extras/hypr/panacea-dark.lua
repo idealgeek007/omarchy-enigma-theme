@@ -15,10 +15,15 @@ hl.config({
   group = { col = { border_active = active, border_inactive = inactive } },
 })
 
--- Respect Omarchy's "no gaps" toggle, which also wants square corners.
+-- The Omarchy shell rounds every panel, menu and notification to Hyprland's
+-- decoration:rounding, so set it to Panacea's 12px. Under the "no gaps"
+-- toggle, keep tiled windows square with a window rule instead, so the
+-- shell still gets its rounded panels.
+hl.config({ decoration = { rounding = 12, rounding_power = 4.0 } })
 local nogaps = io.open(state .. "/toggles/hypr/window-no-gaps.lua", "r")
-if nogaps then nogaps:close() else
-  hl.config({ decoration = { rounding = 12, rounding_power = 4.0 } })
+if nogaps then
+  nogaps:close()
+  o.window({ float = false }, { rounding = 0 })
 end
 
 hl.curve("panaceaPop",    { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
