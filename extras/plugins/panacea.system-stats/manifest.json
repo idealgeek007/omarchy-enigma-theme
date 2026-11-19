@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "panacea.system-stats",
+  "name": "CPU and RAM",
+  "version": "1.0.0",
+  "author": "panacea-dark",
+  "description": "Compact live CPU and RAM usage for the Omarchy bar",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "CPU and RAM",
+    "description": "Compact live CPU and RAM usage",
+    "category": "System",
+    "allowMultiple": false,
+    "defaultSection": "center"
+  }
+}

@@ -1,0 +1,33 @@
+# Panacea Dark — Omarchy theme based on EnsixD/Panacea ("Nothing" look):
+# soft charcoal surfaces, grey text (eased contrast), a single signal red (#d71921).
+mode = "dark"
+
+accent = "#d71921"
+selection = "#2e2e2e"
+muted = "#6e6e6e"
+
+background = "#141414"
+dark_background = "#0f0f0f"
+darker_background = "#0a0a0a"
+lighter_background = "#222222"
+
+foreground = "#bdbdbd"
+dark_foreground = "#5c5c5c"
+light_foreground = "#a8a8a8"
+bright_foreground = "#d6d6d6"
+
+red = "#d9454b"
+yellow = "#cbbd96"
+orange = "#c97a62"
+green = "#a3b39a"
+cyan = "#98b2b0"
+blue = "#97a6b8"
+magenta = "#b39dae"
+brown = "#6e4a43"
+
+bright_red = "#e8676c"
+bright_yellow = "#dccfab"
+bright_green = "#b7c6ae"
+bright_cyan = "#adc6c4"
+bright_blue = "#adbbcc"
+bright_magenta = "#c7b3c3"

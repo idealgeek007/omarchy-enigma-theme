@@ -1,0 +1,24 @@
+#!/bin/bash
+# Arch's `code` is Code - OSS, which reads ~/.vscode-oss and "Code - OSS"
+# settings. Omarchy only writes ~/.vscode, so mirror its generated theme here.
+GEN="$HOME/.local/state/omarchy/current/theme/vscode-theme.json"
+EXT_BASE="$HOME/.vscode-oss/extensions"
+EXT="$EXT_BASE/omarchy-theme"
+SETTINGS="$HOME/.config/Code - OSS/User/settings.json"
+[[ -f $GEN && -d $EXT_BASE ]] || exit 0
+
+mkdir -p "$EXT/themes"
+ln -sfn "$GEN" "$EXT/themes/omarchy-color-theme.json"
+cat >"$EXT/package.json" <<JSON
+{ "name": "omarchy-theme", "displayName": "Omarchy", "publisher": "local", "version": "1.0.0",
+  "engines": { "vscode": "^1.70.0" }, "categories": ["Themes"],
+  "contributes": { "themes": [{ "label": "Omarchy", "uiTheme": "vs-dark", "path": "./themes/omarchy-color-theme.json" }] } }
+JSON
+
+f="$EXT_BASE/extensions.json"; [[ -f $f ]] || echo '[]' >"$f"
+tmp=$(mktemp)
+jq --arg p "$EXT" 'map(select(.identifier.id != "local.omarchy-theme")) + [{identifier:{id:"local.omarchy-theme"},version:"1.0.0",location:{"$mid":1,fsPath:$p,external:("file://"+$p),path:$p,scheme:"file"},relativeLocation:"omarchy-theme"}]' "$f" >"$tmp" && mv "$tmp" "$f"
+
+mkdir -p "$(dirname "$SETTINGS")"; [[ -f $SETTINGS ]] || printf '{\n}\n' >"$SETTINGS"
+grep -q '"workbench.colorTheme"' "$SETTINGS" || sed -i '0,/{/s/{/{ "workbench.colorTheme": "Omarchy",/' "$SETTINGS"
+sed -i -E 's|("workbench.colorTheme"[[:space:]]*:[[:space:]]*")[^"]*(")|\1Omarchy\2|' "$SETTINGS"
