@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "enigma.weather",
+  "name": "Enigma Weather",
+  "version": "1.0.0",
+  "author": "enigma",
+  "description": "Weather pill with detail popup",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "My Weather",
+    "description": "Weather pill with detail popup",
+    "category": "Info",
+    "allowMultiple": false,
+    "settingsForm": "weatherSettings"
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.weather"
+  }
+}
