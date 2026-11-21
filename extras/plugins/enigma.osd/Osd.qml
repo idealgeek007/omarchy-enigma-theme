@@ -74,6 +74,26 @@ Item {
     opened = true
     if (duration > 0) hideTimer.restart()
     else hideTimer.stop()
+    maybePlayVolumeSound()
+  }
+
+  // A tiny tick for a volume change only -- never brightness, mic, or the
+  // rest -- and never while muted (the real volume keybinding only ever
+  // sends "volume-high" or "volume-muted", never a mid-range icon).
+  property real lastSoundAt: 0
+  function maybePlayVolumeSound() {
+    if (root.iconKey.indexOf("volume") !== 0) return
+    if (root.iconKey.indexOf("mute") >= 0) return
+    var now = Date.now()
+    if (now - root.lastSoundAt < 120) return
+    root.lastSoundAt = now
+    Util.execDetached(
+      '[ -e "$HOME/.config/omarchy/enigma-sounds-off" ] && exit 0; ' +
+      'wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED && exit 0; ' +
+      'snd="$HOME/.local/share/sounds/enigma/volume.wav"; ' +
+      'if command -v pw-play >/dev/null 2>&1; then exec pw-play "$snd"; ' +
+      'elif command -v paplay >/dev/null 2>&1; then exec paplay "$snd"; fi'
+    )
   }
 
   function open(payloadJson) {

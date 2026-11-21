@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "enigma.emojis",
+  "name": "Enigma Emojis",
+  "version": "1.0.0",
+  "author": "enigma",
+  "description": "Search, copy, and type emojis",
+  "kinds": [
+    "overlay"
+  ],
+  "keepLoaded": true,
+  "entryPoints": {
+    "overlay": "Emojis.qml"
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.emojis"
+  }
+}

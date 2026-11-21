@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "enigma.dock",
+  "name": "Enigma Dock",
+  "version": "1.0.0",
+  "author": "enigma",
+  "description": "App dock shown on floating workspaces",
+  "kinds": [
+    "service",
+    "menu"
+  ],
+  "entryPoints": {
+    "service": "Dock.qml",
+    "menu": "MenuStub.qml"
+  },
+  "omarchy": {
+    "clonedFrom": "omarchy.dock"
+  }
+}

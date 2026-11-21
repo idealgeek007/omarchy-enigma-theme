@@ -29,7 +29,7 @@ p = sys.argv[1]
 d = json.load(open(p))
 # Point the bar at the enigma.* clones (also migrates older panacea.* ids).
 swap = {}
-for name in ("menu", "osd", "clock", "workspaces", "system-stats", "network", "bluetooth", "audio", "power", "weather"):
+for name in ("menu", "osd", "indicators", "clock", "workspaces", "system-stats", "network", "bluetooth", "audio", "power", "weather"):
     for old in ("omarchy.", "panacea."):
         swap[old + name] = "enigma." + name
 def walk(o):
@@ -48,7 +48,7 @@ PY
   say "Bar: enigma clock, calendar, workspaces, CPU/RAM, Wi-Fi, Bluetooth, audio, power, weather"
 fi
 # Service plugins (pop-ups, notifications, lock): run our copy instead of Omarchy's.
-for p in osd notifications lock menu; do
+for p in osd notifications lock menu dock clipboard emojis; do
   [[ -d ~/.config/omarchy/plugins/enigma.$p ]] || continue
   omarchy plugin disable omarchy.$p >/dev/null 2>&1 || true
   omarchy plugin enable enigma.$p >/dev/null 2>&1 || true
@@ -57,6 +57,7 @@ done
 # 3. Hyprland motion, borders, rounding (only active while the theme is)
 cp "$HERE/hypr/enigma.lua" ~/.config/hypr/enigma.lua
 mkdir -p ~/.local/bin && cp "$HERE/bin/enigma-theme-reapply" ~/.local/bin/
+mkdir -p ~/.local/share/sounds/enigma && cp "$HERE"/sounds/*.wav ~/.local/share/sounds/enigma/
 # migrate the older panacea-dark hook
 rm -f ~/.config/hypr/panacea-dark.lua
 sed -i '/Panacea Dark theme extras/d; /require("hypr.panacea-dark")/d' ~/.config/hypr/hyprland.lua

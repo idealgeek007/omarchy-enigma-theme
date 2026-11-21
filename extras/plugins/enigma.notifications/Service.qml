@@ -179,7 +179,7 @@ Item {
     if (!key) return false
     if (liveKeys[key]) return true
     if (liveCount() >= maxLiveNotifications) return false
-    liveKeys[key] = { originalId: 0, row: null, scheduled: false, held: false }
+    liveKeys[key] = { originalId: 0, row: null, scheduled: false, held: false, sound: "" }
     return true
   }
 
@@ -616,6 +616,10 @@ Item {
 
     storePut(row)
 
+    // Decided once, here, while the sender's own hints are still at hand --
+    // showRow only ever sees the row. Held cards pick it up on release.
+    liveKeys[key].sound = toastSoundFor(row, notification)
+
     // Only a new card waits while the deck is held; an update changes a card in place.
     if (service.holding() && service.rowIndexFor(key) < 0) {
       var pending = liveKeys[key]
@@ -628,6 +632,38 @@ Item {
     }
 
     service.showRow(row)
+  }
+
+  // ------------------------------------------------------------------ sound
+  //
+  // Decide which blip a toast gets, or "" to stay silent. The sender's own
+  // hint wins over everything. Screenshot saves come from Omasnap under its
+  // own app name -- the "Screenshot saved" summary is localized, the app
+  // name is not.
+  function toastSoundFor(row, notification) {
+    var hints = (notification && notification.hints) || {}
+    var suppress = hints["suppress-sound"]
+    if (suppress === true || suppress === 1) return ""
+    if (row.app === "omasnap") return "screenshot.wav"
+    return row.urgency === NotificationUrgency.Critical ? "notification-critical.wav" : "notification.wav"
+  }
+
+  // One sound per ~800ms, however many cards land in that window -- a storm
+  // should not become a buzz. The off-switch and the sink's mute state are
+  // re-checked in the detached shell at play time, not here, so a decision
+  // from before either changed can never fire late.
+  property real lastSoundAt: 0
+  function playToastSound(name) {
+    var now = Date.now()
+    if (now - lastSoundAt < 800) return
+    lastSoundAt = now
+    Util.execDetached(
+      '[ -e "$HOME/.config/omarchy/enigma-sounds-off" ] && exit 0; ' +
+      'wpctl get-volume @DEFAULT_AUDIO_SINK@ 2>/dev/null | grep -q MUTED && exit 0; ' +
+      'snd="$HOME/.local/share/sounds/enigma/' + name + '"; ' +
+      'if command -v pw-play >/dev/null 2>&1; then exec pw-play "$snd"; ' +
+      'elif command -v paplay >/dev/null 2>&1; then exec paplay "$snd"; fi'
+    )
   }
 
   function watchNotification(notification, key) {
@@ -688,6 +724,8 @@ Item {
       if (service.liveKeys[key] !== pending || pending.held || !pending.row) return
       var row = pending.row
       pending.row = null
+      var sound = pending.sound
+      pending.sound = ""
       var at = service.rowIndexFor(key)
       var snap = service.snapshot(), deckNow = service.deckHeight
       if (at >= 0) {
@@ -703,6 +741,9 @@ Item {
         service.arriving = key
         toasts.insert(0, row)
         service.arriving = ""
+        // A genuinely new card chimes; an in-place update above (same card,
+        // new text) does not -- a replacing sender shouldn't buzz on every edit.
+        if (sound) service.playToastSound(sound)
         // It drops in from just above where it lands, from under the bar for
         // the top card, and fades in on the way.
         var landing = service.layout.placements[key]
