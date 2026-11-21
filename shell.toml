@@ -181,13 +181,10 @@ border-alpha              = 1.0
 scrim                     = "#000000"
 scrim-alpha               = 0.6
 selected-background       = "#d6d6d6"
-selected-background-alpha = 0.08
+selected-background-alpha = 0.13
 selected-text             = "#ffffff"
 selected-border           = "#d71921"
-selected-border-alpha     = 1.0
-# Nothing-style: a red bar on the left edge of the selected row only.
-selected-border-width      = 0
-selected-border-width-left = 3
+selected-border-alpha     = 0.85
 
 [polkit]
 # Polkit authentication prompt (sudo/password dialogs). scrim is the
