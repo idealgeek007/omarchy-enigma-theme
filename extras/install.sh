@@ -29,7 +29,7 @@ p = sys.argv[1]
 d = json.load(open(p))
 # Point the bar at the enigma.* clones (also migrates older panacea.* ids).
 swap = {}
-for name in ("menu", "clock", "workspaces", "system-stats", "network", "bluetooth", "audio", "power", "weather"):
+for name in ("menu", "osd", "clock", "workspaces", "system-stats", "network", "bluetooth", "audio", "power", "weather"):
     for old in ("omarchy.", "panacea."):
         swap[old + name] = "enigma." + name
 def walk(o):
