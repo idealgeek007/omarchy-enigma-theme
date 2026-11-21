@@ -74,7 +74,7 @@ BarWidget {
           width: root.vertical ? cell.dot : (cell.focused ? cell.dot * 3.2 : cell.dot)
           height: root.vertical ? (cell.focused ? cell.dot * 3.2 : cell.dot) : cell.dot
           radius: cell.dot / 2
-          color: cell.focused ? Color.accent : Color.foreground
+          color: cell.focused ? "#d71921" : Color.foreground   // Nothing red, fixed so it never falls back to grey
           opacity: cell.focused ? 1 : (cell.occupied ? 0.9 : 0.28)
           Behavior on width { NumberAnimation { duration: 220; easing.type: Easing.OutQuint } }
           Behavior on height { NumberAnimation { duration: 220; easing.type: Easing.OutQuint } }
