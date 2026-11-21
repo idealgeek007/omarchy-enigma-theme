@@ -50,6 +50,7 @@ fi
 
 # 3. Hyprland motion, borders, rounding (only active while the theme is)
 cp "$HERE/hypr/enigma.lua" ~/.config/hypr/enigma.lua
+mkdir -p ~/.local/bin && cp "$HERE/bin/enigma-theme-reapply" ~/.local/bin/
 # migrate the older panacea-dark hook
 rm -f ~/.config/hypr/panacea-dark.lua
 sed -i '/Panacea Dark theme extras/d; /require("hypr.panacea-dark")/d' ~/.config/hypr/hyprland.lua

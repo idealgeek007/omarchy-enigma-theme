@@ -8,6 +8,10 @@ local theme = f and f:read("*l") or ""
 if f then f:close() end
 if theme ~= "enigma" then return end
 
+-- Re-push theme colours a few seconds after login (keeps the red accent from
+-- coming up grey when the shell starts before its theme read lands).
+o.exec_on_start("$HOME/.local/bin/enigma-theme-reapply")
+
 local active = { colors = { "rgba(d71921ff)", "rgba(ffffff99)" }, angle = 45 }
 local inactive = "rgba(222222ff)"
 hl.config({

@@ -1,0 +1,13 @@
+#!/bin/bash
+# Re-sends the active theme's colours to omarchy-shell shortly after login.
+# At boot the shell can come up before its theme read lands, leaving the red
+# accent grey until the shell restarts; a second push fixes that.
+set -u
+theme=${XDG_STATE_HOME:-$HOME/.local/state}/omarchy/current/theme
+for delay in 4 12; do
+  sleep "$delay"
+  [[ -f $theme/colors.toml ]] || continue
+  colors=$(base64 -w 0 "$theme/colors.toml")
+  shell=$([[ -f $theme/shell.toml ]] && base64 -w 0 "$theme/shell.toml" || true)
+  timeout 3 omarchy-shell shell applyTheme "$colors" "$shell" >/dev/null 2>&1 || true
+done
