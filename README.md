@@ -23,6 +23,9 @@ up anything it replaces as `*.bak.<timestamp>` and is safe to re-run.
 |---|---|
 | `plugins/enigma.menu` | Menu with a dot-matrix title, depth dots (current level in red) and a red icon on the selected row |
 | `plugins/enigma.osd` `.notifications` `.lock` | Volume/brightness pop-up as a dot row; notifications with dotted titles, a draining dot countdown and a red dot for urgent ones; lock screen with a big dot-matrix clock |
+| `plugins/enigma.indicators` | Red privacy dots by the clock while the mic, camera or a screen recording is active |
+| `plugins/enigma.dock` `.clipboard` `.emojis` | App launcher, clipboard and emoji pickers with the menu's dotted title |
+| `sounds/` | Original synthesized UI sounds (notification, urgent, volume tick, screenshot); `touch ~/.config/omarchy/enigma-sounds-off` to mute them |
 | `plugins/enigma.clock` | Dot-matrix bar clock; calendar with dotted date, red "today" disc, year as a dot bar |
 | `plugins/enigma.workspaces` | Workspace dots: red pill = focused, white = occupied, dim = empty |
 | `plugins/enigma.system-stats` | CPU / RAM: dim labels, dotted values, red past 85% |
