@@ -47,6 +47,12 @@ json.dump(d, open(p, "w"), indent=2)
 PY
   say "Bar: enigma clock, calendar, workspaces, CPU/RAM, Wi-Fi, Bluetooth, audio, power, weather"
 fi
+# Service plugins (pop-ups, notifications, lock): run our copy instead of Omarchy's.
+for p in osd notifications lock menu; do
+  [[ -d ~/.config/omarchy/plugins/enigma.$p ]] || continue
+  omarchy plugin disable omarchy.$p >/dev/null 2>&1 || true
+  omarchy plugin enable enigma.$p >/dev/null 2>&1 || true
+done
 
 # 3. Hyprland motion, borders, rounding (only active while the theme is)
 cp "$HERE/hypr/enigma.lua" ~/.config/hypr/enigma.lua
