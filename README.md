@@ -21,6 +21,7 @@ up anything it replaces as `*.bak.<timestamp>` and is safe to re-run.
 
 | Extra | What you get |
 |---|---|
+| `plugins/enigma.menu` | Menu with a dot-matrix title, depth dots (current level in red) and a red icon on the selected row |
 | `plugins/enigma.clock` | Dot-matrix bar clock; calendar with dotted date, red "today" disc, year as a dot bar |
 | `plugins/enigma.workspaces` | Workspace dots: red pill = focused, white = occupied, dim = empty |
 | `plugins/enigma.system-stats` | CPU / RAM: dim labels, dotted values, red past 85% |
