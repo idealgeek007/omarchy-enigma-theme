@@ -22,6 +22,7 @@ up anything it replaces as `*.bak.<timestamp>` and is safe to re-run.
 | Extra | What you get |
 |---|---|
 | `plugins/enigma.menu` | Menu with a dot-matrix title, depth dots (current level in red) and a red icon on the selected row |
+| `plugins/enigma.osd` `.notifications` `.lock` | Volume/brightness pop-up as a dot row; notifications with dotted titles, a draining dot countdown and a red dot for urgent ones; lock screen with a big dot-matrix clock |
 | `plugins/enigma.clock` | Dot-matrix bar clock; calendar with dotted date, red "today" disc, year as a dot bar |
 | `plugins/enigma.workspaces` | Workspace dots: red pill = focused, white = occupied, dim = empty |
 | `plugins/enigma.system-stats` | CPU / RAM: dim labels, dotted values, red past 85% |
@@ -31,6 +32,10 @@ up anything it replaces as `*.bak.<timestamp>` and is safe to re-run.
 | `fastfetch/` | Red logo and keys, dot bullets |
 | `hooks/code-oss-theme.hook` | Syncs the theme into Code - OSS (Arch's `code`), which Omarchy skips |
 | `fonts/Doto-ExtraBold.ttf` | Dot-matrix font, [Doto](https://github.com/oliverlalan/Doto), SIL OFL 1.1 |
+
+## Wallpaper
+
+`wallpapers/enigma-glyph.mp4`: a 24 s loop of a dot ring with one red light orbiting it, for video wallpaper players (mpvpaper etc.). A still of it is in `backgrounds/`.
 
 ## Credits
 
